@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1</title>
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+   <div>
+    <h1>Day 1</h1>
+    <p>Starting the first leetcode problem, 2 sum. Probably the most popular leetcode question around. Also, I have worked with this problem before</p>
+    <p>Hopefully, I can work with it without using any external resources</p>
+    <b>Problem: </b> Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+    <h3>First Approach:</h3>
+    <h4><u>Brute Force </u></h4>
+    <p>Use 2 for loops. First stays at and index while the nested loop goes through rest of the element. If value of array[i] + array[j] = target return i,j</p>
+    <p>Failed a few tests because nested loop should start an index higher than the first loop. [3,4,2], target = 6 would produce true at [0,0] because 3+3 would be zero. So need to bump up an index for the second loop</p>
+    <pre>
+        <code class="language-css">
+        def twoSum(nums, target):
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                print(nums[i], nums[j], target)
+                if (nums[i] + nums[j]) == target:
+                    print("here")
+                    return [i,j]
+        return
+        </code>
+    </pre>
+   </div> 
+   <h3>Second Approach:</h3>
+   <h4><u>Using a dictionary</u></h4>
+   Brute force uses O(n^2). We can keep adding the values and their respective index as definition to a dictionary. 
+   <p>Take the target and subtract the current arr[i] with the target, if the subtracted value exists in the dictionary, then that would be the solution values, return their indices</p>
+   <pre>
+        <code class="language-css">
+        class Solution:
+            def twoSum(self, nums: List[int], target: int) -> List[int]:
+            hist = {}
+            for i, n in enumerate(nums):
+                diff = target - n
+                if diff in hist:
+                    return (i, hist[diff])
+                hist[n] = i
+            return
+        </code>
+    </pre>
+    
+    <b>Problem: </b> Optimizing fibbionacci series calculator using memoization
+    <h3>Recursive method:</h3>
+    <h4><u>Add base cases and take sum of n-1 and n-2 by recursively calling the same function </u></h4>
+    <p>Use 2 for loops. First stays at and index while the nested loop goes through rest of the element. If value of array[i] + array[j] = target return i,j</p>
+    <p>Failed a few tests because nested loop should start an index higher than the first loop. [3,4,2], target = 6 would produce true at [0,0] because 3+3 would be zero. So need to bump up an index for the second loop</p>
+    <pre>
+        <code class="language-css">
+        def fib(n):
+            if n <= 2:
+                return 1
+            return fib(n-1) + fib(n-2)
+        print(fib(10))
+        </code>
+    </pre>
+    Problem occurs with larger number like fib(40), where it takes a long time to compute the value. This happens because it needs to calcaulate the fib values over and over again.
+    We can reduce the number of calculations by storing the values in a dict so that it can re-used whenever necessary.
+    <pre>
+        <code class="language-css">
+        def fib(n, hist = {}):
+            if n <= 2:
+                return 1
+            if n in hist:
+                return hist[n]
+            hist[n] = fib(n-1, hist) + fib(n-2, hist)
+            return hist[n]
+        print(fib(40))
+        </code>
+    </pre>
+    <p>If the value is already calcualted before then reuse the value as it will be stored in the hist dict. If it has not been added before, add it to the dict and then return the value</p>
+</body>
+</html>
