@@ -15,7 +15,7 @@
     <b>Problem: </b> Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
     <h3>First Approach:</h3>
     <h4><u>Brute Force </u></h4>
-    <p>Use 2 for loops. First stays at and index while the nested loop goes through rest of the element. If value of array[i] + array[j] = target return i,j</p>
+    <p>Use 2 for loops. First stays at an index while the nested loop goes through rest of the element. If value of array[i] + array[j] = target return i,j</p>
     <p>Failed a few tests because nested loop should start an index higher than the first loop. [3,4,2], target = 6 would produce true at [0,0] because 3+3 would be zero. So need to bump up an index for the second loop</p>
     <pre>
         <code class="language-css">
