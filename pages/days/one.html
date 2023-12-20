@@ -50,9 +50,8 @@
     
     <b>Problem: </b> Optimizing fibbionacci series calculator using memoization
     <h3>Recursive method:</h3>
-    <h4><u>Add base cases and take sum of n-1 and n-2 by recursively calling the same function </u></h4>
-    <p>Use 2 for loops. First stays at and index while the nested loop goes through rest of the element. If value of array[i] + array[j] = target return i,j</p>
-    <p>Failed a few tests because nested loop should start an index higher than the first loop. [3,4,2], target = 6 would produce true at [0,0] because 3+3 would be zero. So need to bump up an index for the second loop</p>
+    <p> Add base cases and take sum of n-1 and n-2 by recursively calling the same function</p>
+    <p>Works perfectly fine but it isn't optimized. So when it is required to calculate fib for a higher number it takes too long</p>
     <pre>
         <code class="language-css">
         def fib(n):
